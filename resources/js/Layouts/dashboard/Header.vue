@@ -38,8 +38,8 @@
 
           <!-- Theme Toggle -->
           <button class="btn btn-link btn-square btn-link-header btnsunmoon" type="button" @click="toggleTheme">
-            <i :class="currentTheme === 'light' ? 'sun' : 'moon'"
-              :data-feather="currentTheme === 'light' ? 'moon' : 'sun'"></i>
+            <i data-feather="sun" v-show="currentTheme === 'light'" class="sun"></i>
+            <i data-feather="moon" v-show="currentTheme === 'dark'" class="moon"></i>
           </button>
 
           <!-- Notification Dropdown -->
@@ -106,9 +106,8 @@ onMounted(() => {
 })
 
 watch(currentTheme, () => {
-  feather.replace() // Re-render feather icon when theme changes
+  feather.replace()
 })
-
 </script>
 
 <style scoped>

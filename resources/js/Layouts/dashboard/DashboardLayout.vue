@@ -6,18 +6,24 @@
 
     <div class="adminuiux-wrap">
       <!-- Sidebar -->
-      <Sidebar/>
-  
+      <Sidebar />
+
       <!-- Main Content -->
       <main class="adminuiux-content has-sidebar" @click="handleContentClick">
-        <div class="container mt-4" id="main-content">
-          <slot></slot>
-        </div>
+        <slot>
+          <!-- Page content will be injected here -->
+        </slot>
       </main>
     </div>
 
+    <!-- Personalize offcanvas -->
+    <PersonalizeOffcanvas />
+
+    <!-- Floating palette, back-to-top, modal -->
+    <UtilityButtons />
+
     <!-- Footer -->
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -26,13 +32,15 @@ import { ref, onMounted } from 'vue'
 import Header from './Header.vue'
 import Sidebar from './Sidebar.vue'
 import Footer from './Footer.vue'
+import PersonalizeOffcanvas from '@/Components/PersonalizeOffcanvas.vue'
+import UtilityButtons from '@/Components/UtilityButtons.vue'
 
 
 const isSidebarOpen = ref(true)
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
-  document.body.classList.toggle('sidebar-open', isSidebarOpen.value)
+  document.body.classList.toggle('sidebar-hidden', isSidebarOpen.value)
 }
 
 onMounted(() => {
@@ -42,6 +50,9 @@ onMounted(() => {
 </script>
 
 <style>
+.sidebar-hidden .adminuiux-sidebar {
+  transform: translateX(-100%);
+}
 
 .adminuiux-sidebar {
   transition: transform 0.3s ease;
@@ -58,5 +69,4 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
 }
-
 </style>
