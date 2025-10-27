@@ -34,6 +34,8 @@
 
 <body class="font-sans antialiased sidebar-open">
     @inertia
+
+    <script src="{{ asset('dashboard-assets/js/learning/learning-dashboard.js') }}"></script>
 </body>
 
 </html>

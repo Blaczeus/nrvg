@@ -1,15 +1,20 @@
-/*! For license information please see learning-dashboard.js.LICENSE.txt */
 "use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
     window.randomScalingFactor = function () {
         return Math.round(20 * Math.random());
     };
-    var a = document.getElementById("areachartblue1").getContext("2d"),
-        t = a.createLinearGradient(0, 0, 0, 90);
-    t.addColorStop(0, "rgba(0, 73, 232, 1)"),
-        t.addColorStop(0.5, "rgba(0, 168, 133, 0.5)"),
-        t.addColorStop(1, "rgba(255, 193, 7, 0)");
-    var o = {
+
+    // --- Area Chart (Blue)
+    const areaChartCanvas = document.getElementById("areachartblue1");
+    if (areaChartCanvas) {
+        const ctx = areaChartCanvas.getContext("2d");
+        const gradient = ctx.createLinearGradient(0, 0, 0, 90);
+        gradient.addColorStop(0, "rgba(0, 73, 232, 1)");
+        gradient.addColorStop(0.5, "rgba(0, 168, 133, 0.5)");
+        gradient.addColorStop(1, "rgba(255, 193, 7, 0)");
+
+        const areaConfig = {
             type: "line",
             data: {
                 labels: [
@@ -32,61 +37,46 @@ document.addEventListener("DOMContentLoaded", function () {
                 datasets: [
                     {
                         label: "# of Votes",
-                        data: [
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                        ],
+                        data: Array(16).fill().map(randomScalingFactor),
                         radius: 0,
-                        backgroundColor: t,
+                        backgroundColor: gradient,
                         borderColor: "#015EC2",
                         borderWidth: 0,
-                        borderRadius: 4,
-                        fill: !0,
+                        fill: true,
                         tension: 0.5,
                     },
                 ],
             },
             options: {
-                maintainAspectRatio: !1,
-                plugins: { legend: { display: !1 }, tooltip: { enabled: !0 } },
-                scales: {
-                    y: { display: !1, beginAtZero: !0 },
-                    x: { display: !1 },
-                },
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { display: false }, x: { display: false } },
             },
-        },
-        r = new Chart(a, o);
-    setInterval(function () {
-        o.data.datasets.forEach(function (a) {
-            a.data = a.data.map(function () {
-                return randomScalingFactor();
+        };
+
+        const areaChart = new Chart(ctx, areaConfig);
+        setInterval(() => {
+            areaConfig.data.datasets.forEach((ds) => {
+                ds.data = ds.data.map(randomScalingFactor);
             });
-        }),
-            r.update();
-    }, 3e3);
-    var n = document.getElementById("summarychart").getContext("2d"),
-        e = n.createLinearGradient(0, 0, 0, 280);
-    e.addColorStop(0, "rgba(0, 73, 232, 1)"),
-        e.addColorStop(0.5, "rgba(0, 168, 133, 0.5)"),
-        e.addColorStop(1, "rgba(255, 193, 7, 0)");
-    var d = n.createLinearGradient(0, 0, 0, 280);
-    d.addColorStop(0, "rgba(3, 4, 94, 0.85)"),
-        d.addColorStop(1, "rgba(0, 73, 232, 0)");
-    var i = {
+            areaChart.update();
+        }, 3000);
+    }
+
+    // --- Summary Chart
+    const summaryChartCanvas = document.getElementById("summarychart");
+    if (summaryChartCanvas) {
+        const ctx = summaryChartCanvas.getContext("2d");
+        const grad1 = ctx.createLinearGradient(0, 0, 0, 280);
+        grad1.addColorStop(0, "rgba(0, 73, 232, 1)");
+        grad1.addColorStop(0.5, "rgba(0, 168, 133, 0.5)");
+        grad1.addColorStop(1, "rgba(255, 193, 7, 0)");
+
+        const grad2 = ctx.createLinearGradient(0, 0, 0, 280);
+        grad2.addColorStop(0, "rgba(3, 4, 94, 0.85)");
+        grad2.addColorStop(1, "rgba(0, 73, 232, 0)");
+
+        const barConfig = {
             type: "bar",
             data: {
                 labels: [
@@ -100,126 +90,107 @@ document.addEventListener("DOMContentLoaded", function () {
                 ],
                 datasets: [
                     {
-                        label: "# of hours",
-                        data: [
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                        ],
-                        radius: 0,
-                        backgroundColor: e,
-                        borderColor: "#5840ef",
+                        data: Array(8).fill().map(randomScalingFactor),
+                        backgroundColor: grad1,
                         borderWidth: 0,
-                        fill: !0,
-                        tension: 0.5,
+                        fill: true,
                     },
                     {
-                        label: "# of hours",
-                        data: [
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                            randomScalingFactor(),
-                        ],
-                        radius: 0,
-                        backgroundColor: d,
-                        borderColor: "#03045e",
+                        data: Array(8).fill().map(randomScalingFactor),
+                        backgroundColor: grad2,
                         borderWidth: 0,
-                        fill: !0,
-                        tension: 0.5,
+                        fill: true,
                     },
                 ],
             },
             options: {
-                animation: !0,
-                maintainAspectRatio: !1,
-                plugins: { legend: { display: !1 } },
+                animation: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: { display: !0, beginAtZero: !0 },
-                    x: { grid: { display: !0 }, display: !0, beginAtZero: !0 },
+                    y: { display: true },
+                    x: { grid: { display: true } },
                 },
             },
-        },
-        l = new Chart(n, i);
-    setInterval(function () {
-        i.data.datasets.forEach(function (a) {
-            a.data = a.data.map(function () {
-                return randomScalingFactor();
+        };
+
+        const summaryChart = new Chart(ctx, barConfig);
+        setInterval(() => {
+            barConfig.data.datasets.forEach((ds) => {
+                ds.data = ds.data.map(randomScalingFactor);
             });
-        }),
-            l.update();
-    }, 3e3);
-    var c = document.getElementById("doughnutchart").getContext("2d");
-    new Chart(c, {
-        type: "doughnut",
-        data: {
-            labels: ["IT", "Bio", "Designing", "Other"],
-            datasets: [
-                {
-                    label: "Learning Categories",
-                    data: [45, 30, 25, 10],
-                    backgroundColor: [
-                        "#6faa00",
-                        "#ffc107",
-                        "#0049e8",
-                        "#becede",
-                    ],
-                    borderWidth: 0,
+            summaryChart.update();
+        }, 3000);
+    }
+
+    // --- Doughnut Chart
+    const doughnutCanvas = document.getElementById("doughnutchart");
+    if (doughnutCanvas) {
+        const ctx = doughnutCanvas.getContext("2d");
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: ["IT", "Bio", "Designing", "Other"],
+                datasets: [
+                    {
+                        data: [45, 30, 25, 10],
+                        backgroundColor: [
+                            "#6faa00",
+                            "#ffc107",
+                            "#0049e8",
+                            "#becede",
+                        ],
+                        borderWidth: 0,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                cutout: 60,
+                plugins: { legend: { display: false } },
+            },
+        });
+    }
+
+    // --- Progress Circles
+    if (window.ProgressBar) {
+        const circleConfigs = [
+            {
+                id: "circleprogressblue1",
+                color: "#015EC2",
+                trailColor: "rgba(66, 157, 255, 0.15)",
+                value: 0.65,
+            },
+            {
+                id: "circleprogressgreen1",
+                color: "#91C300",
+                trailColor: "#eaf4d8",
+                value: 0.85,
+            },
+        ];
+
+        circleConfigs.forEach((cfg) => {
+            const el = document.getElementById(cfg.id);
+            if (!el) return;
+            const circle = new ProgressBar.Circle(el, {
+                color: cfg.color,
+                strokeWidth: 10,
+                trailWidth: 10,
+                easing: "easeInOut",
+                trailColor: cfg.trailColor,
+                duration: 1400,
+                text: { autoStyleContainer: false },
+                from: { color: cfg.color, width: 10 },
+                to: { color: cfg.color, width: 10 },
+                step: (state, circle) => {
+                    circle.path.setAttribute("stroke", state.color);
+                    const value = Math.round(circle.value() * 100);
+                    circle.setText(
+                        value === 0 ? "" : `${value}<small>%</small>`
+                    );
                 },
-            ],
-        },
-        options: {
-            responsive: !0,
-            cutout: 60,
-            tooltips: { position: "nearest", yAlign: "bottom" },
-            plugins: {
-                legend: { display: !1, position: "top" },
-                title: { display: !1, text: "Chart.js Doughnut Chart" },
-            },
-            layout: { padding: 0 },
-        },
-    });
-    new ProgressBar.Circle(circleprogressblue1, {
-        color: "#015EC2",
-        strokeWidth: 10,
-        trailWidth: 10,
-        easing: "easeInOut",
-        trailColor: "rgba(66, 157, 255, 0.15)",
-        duration: 1400,
-        text: { autoStyleContainer: !1 },
-        from: { color: "#015EC2", width: 10 },
-        to: { color: "#015EC2", width: 10 },
-        step: function (a, t) {
-            t.path.setAttribute("stroke", a.color),
-                t.path.setAttribute("stroke-width", a.width);
-            var o = Math.round(100 * t.value());
-            0 === o ? t.setText("") : t.setText(o + "<small>%<small>");
-        },
-    }).animate(0.65),
-        new ProgressBar.Circle(circleprogressgreen1, {
-            color: "#91C300",
-            strokeWidth: 10,
-            trailWidth: 10,
-            easing: "easeInOut",
-            trailColor: "#eaf4d8",
-            duration: 1400,
-            text: { autoStyleContainer: !1 },
-            from: { color: "#91C300", width: 10 },
-            to: { color: "#91C300", width: 10 },
-            step: function (a, t) {
-                t.path.setAttribute("stroke", a.color),
-                    t.path.setAttribute("stroke-width", a.width);
-                var o = Math.round(100 * t.value());
-                0 === o ? t.setText("") : t.setText(o + "<small>%<small>");
-            },
-        }).animate(0.85);
+            });
+            circle.animate(cfg.value);
+        });
+    }
 });
