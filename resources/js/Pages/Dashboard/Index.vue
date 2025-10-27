@@ -17,7 +17,7 @@
                 <div class="card adminuiux-card shadow-sm overflow-hidden">
                   <div class="card-body">
                     <figure class="height-120 w-100 coverimg rounded mb-3">
-                      <img src="assets/img/background-image/background-image-11.jpg" alt="" />
+                      <img src="/dashboard-assets/img/background-image/background-image-11.jpg" alt="" />
                     </figure>
                     <h6 class="mb-0">IT Data Modal</h6>
                     <p class="small">Prof. John Jackson</p>
@@ -46,7 +46,7 @@
                 <div class="card adminuiux-card shadow-sm">
                   <div class="card-body">
                     <figure class="height-120 w-100 coverimg rounded mb-3">
-                      <img src="assets/img/modern-ai-image/tree-6.jpg" alt="" />
+                      <img src="/dashboard-assets/img/modern-ai-image/tree-6.jpg" alt="" />
                     </figure>
                     <h6 class="mb-0">Bio Management</h6>
                     <p class="small">Prof. Jinjo Min</p>
@@ -69,7 +69,7 @@
                 <div class="card adminuiux-card shadow-sm">
                   <div class="card-body">
                     <figure class="height-120 w-100 coverimg rounded mb-3">
-                      <img src="assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
+                      <img src="/dashboard-assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
                     </figure>
                     <h6 class="mb-0">Eco-Sensativity</h6>
                     <p class="small">Prof. John Jackson</p>
@@ -171,7 +171,7 @@
               <div class="row align-items-center">
                 <div class="col-auto">
                   <div class="avatar avatar-50 coverimg rounded mb-3">
-                    <img src="assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
+                    <img src="/dashboard-assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
                   </div>
                 </div>
                 <div class="col mb-3">
@@ -254,7 +254,7 @@
               <div class="height-150 text-center position-relative mb-4">
                 <div class="position-absolute top-50 start-50 translate-middle z-index-0">
                   <figure class="avatar avatar-100 rounded-circle coverimg align-middle shadow-sm">
-                    <img src="assets/img/modern-ai-image/user-6.jpg" alt="" />
+                    <img src="/dashboard-assets/img/modern-ai-image/user-6.jpg" alt="" />
                   </figure>
                 </div>
                 <canvas id="doughnutchart" class="position-relative z-index-1 mx-auto"></canvas>
@@ -464,7 +464,7 @@
                   </p>
                   <div class="row align-items-center gx-2 mb-0">
                     <div class="col-auto">
-                      <img src="assets/img/background-image/background-image-11.jpg" class="avatar avatar-20 rounded"
+                      <img src="/dashboard-assets/img/background-image/background-image-11.jpg" class="avatar avatar-20 rounded"
                         alt="" />
                     </div>
                     <div class="col">
@@ -484,7 +484,7 @@
                   </p>
                   <div class="row gx-2 mb-0">
                     <div class="col-auto">
-                      <img src="assets/img/modern-ai-image/user-4.jpg" class="avatar avatar-20 rounded-circle" alt="" />
+                      <img src="/dashboard-assets/img/modern-ai-image/user-4.jpg" class="avatar avatar-20 rounded-circle" alt="" />
                       <img src="https://i.pravatar.cc/300" class="avatar avatar-20 rounded-circle" alt="" />
                     </div>
                     <div class="col">
@@ -504,7 +504,7 @@
                   </p>
                   <div class="row gx-2 mb-0">
                     <div class="col-auto">
-                      <img src="assets/img/modern-ai-image/user-4.jpg" class="avatar avatar-20 rounded-circle" alt="" />
+                      <img src="/dashboard-assets/img/modern-ai-image/user-4.jpg" class="avatar avatar-20 rounded-circle" alt="" />
                       <img src="https://i.pravatar.cc/300" class="avatar avatar-20 rounded-circle" alt="" />
                     </div>
                     <div class="col">
@@ -562,7 +562,7 @@
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card adminuiux-card shadow-sm bg-theme-1 overflow-hidden position-relative mb-4">
             <div class="position-absolute start-0 top-0 h-100 w-100 rounded overflow-hidden coverimg z-index-0">
-              <img src="assets/img/learning/bg-overlay-1.png" alt="" />
+              <img src="/dashboard-assets/img/learning/bg-overlay-1.png" alt="" />
             </div>
             <div class="card-body height-dynamic position-relative" style="--h-dynamic: 322px">
               <span class="opacity-50 position-absolute end-0 top-0 m-1 mx-2 fs-12">Advertisement</span>
@@ -629,7 +629,7 @@
                   <div class="row align-items-center">
                     <div class="col-auto">
                       <div class="avatar avatar-40 coverimg rounded">
-                        <img src="assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
+                        <img src="/dashboard-assets/img/modern-ai-image/flamingo-1.jpg" alt="" />
                       </div>
                     </div>
                     <div class="col">
@@ -692,7 +692,7 @@
                   <div class="row align-items-center">
                     <div class="col-auto">
                       <div class="avatar avatar-40 coverimg rounded">
-                        <img src="assets/img/background-image/background-image-11.jpg" alt="" />
+                        <img src="/dashboard-assets/img/background-image/background-image-11.jpg" alt="" />
                       </div>
                     </div>
                     <div class="col">
@@ -752,7 +752,7 @@
                   <div class="row align-items-center">
                     <div class="col-auto">
                       <div class="avatar avatar-40 coverimg rounded">
-                        <img src="assets/img/modern-ai-image/user-3.jpg" alt="" />
+                        <img src="/dashboard-assets/img/modern-ai-image/user-3.jpg" alt="" />
                       </div>
                     </div>
                     <div class="col">
