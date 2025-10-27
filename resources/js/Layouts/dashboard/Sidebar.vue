@@ -4,7 +4,8 @@
       <!-- Navigation Menu -->
       <ul class="nav flex-column menu-active-line">
         <li class="nav-item">
-          <a :href="route('dashboard')" class="nav-link" :class="{ active: isActiveRoute('dashboard').value }">
+          <a :href="route('dashboard')" class="nav-link" :class="{ active: isActiveRoute('dashboard').value }"
+            @click="setActiveRoute('dashboard')">
             <i class="menu-icon bi bi-columns-gap"></i>
             <span class="menu-name">Dashboard</span>
           </a>
@@ -19,25 +20,29 @@
           </a>
           <div class="dropdown-menu" :class="{ show: isDropdownActive('students').value }">
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.academic').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.academic').value }"
+                @click="setActiveRoute('students.academic')">
                 <i class="menu-icon bi bi-house-gear"></i>
                 <span class="menu-name">Academic</span>
               </a>
             </div>
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.attendance').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.attendance').value }"
+                @click="setActiveRoute('students.attendance')">
                 <i class="menu-icon bi bi-clipboard-check"></i>
                 <span class="menu-name">Attendance</span>
               </a>
             </div>
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.all').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.all').value }"
+                @click="setActiveRoute('students.all')">
                 <i class="menu-icon bi bi-people"></i>
                 <span class="menu-name">All Students</span>
               </a>
             </div>
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.profile').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('students.profile').value }"
+                @click="setActiveRoute('students.profile')">
                 <i class="menu-icon bi bi-people"></i>
                 <span class="menu-name">
                   Profile <i class="bi bi-star-fill text-warning fs-14"></i>
@@ -56,19 +61,22 @@
           </a>
           <div class="dropdown-menu" :class="{ show: isDropdownActive('courses').value }">
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.inschool').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.inschool').value }"
+                @click="setActiveRoute('courses.inschool')">
                 <i class="menu-icon bi bi-book"></i>
                 <span class="menu-name">In-School</span>
               </a>
             </div>
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.ecourses').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.ecourses').value }"
+                @click="setActiveRoute('courses.ecourses')">
                 <i class="menu-icon bi bi-play-btn"></i>
                 <span class="menu-name">e-Courses</span>
               </a>
             </div>
             <div class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.parttime').value }">
+              <a href="#" class="nav-link" :class="{ active: isActiveRoute('courses.parttime').value }"
+                @click="setActiveRoute('courses.parttime')">
                 <i class="menu-icon bi bi-clock-history"></i>
                 <span class="menu-name">Part-Time</span>
               </a>
@@ -78,50 +86,57 @@
 
         <!-- Other static links -->
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('calendar').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('calendar').value }"
+            @click="setActiveRoute('calendar')">
             <i class="menu-icon bi bi-calendar2-range"></i>
             <span class="menu-name">Calendar</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('fees').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('fees').value }" @click="setActiveRoute('fees')">
             <i class="menu-icon bi bi-receipt-cutoff"></i>
             <span class="menu-name">Fees</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('teachers').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('teachers').value }"
+            @click="setActiveRoute('teachers')">
             <i class="menu-icon bi bi-people"></i>
             <span class="menu-name">Teachers</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('settings').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('settings').value }"
+            @click="setActiveRoute('settings')">
             <i class="menu-icon" data-feather="settings"></i>
             <span class="menu-name">Settings</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('about').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('about').value }"
+            @click="setActiveRoute('about')">
             <i class="menu-icon bi bi-building"></i>
             <span class="menu-name">About School</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('pages').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('pages').value }"
+            @click="setActiveRoute('pages')">
             <i class="menu-icon bi bi-layers"></i>
             <span class="menu-name">Pages</span>
             <span class="badge text-bg-primary mx-2">50+</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('personalize').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('personalize').value }"
+            @click="setActiveRoute('personalize')">
             <i class="menu-icon bi bi-palette h4"></i>
             <span class="menu-name">Personalize ❤️</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" :class="{ active: isActiveRoute('components').value }">
+          <a href="#" class="nav-link" :class="{ active: isActiveRoute('components').value }"
+            @click="setActiveRoute('components')">
             <i class="menu-icon bi bi-cpu"></i>
             <span class="menu-name">Components</span>
           </a>
@@ -183,35 +198,40 @@ import { usePage } from '@inertiajs/vue3'
 import feather from 'feather-icons'
 
 const page = usePage()
-const currentRoute = ref(page.value?.props?.route?.name || '')
+const currentRoute = ref(page.value?.props?.route?.name || localStorage.getItem('activeRoute') || '')
 
-// Watch for route changes from Inertia
+// Persist active route on click
+const setActiveRoute = (routeName) => {
+  currentRoute.value = routeName
+  localStorage.setItem('activeRoute', routeName)
+}
+
+// Watch for Inertia route changes
 watch(
   () => page.value?.props?.route?.name,
   (newRoute) => {
-    currentRoute.value = newRoute
+    if (newRoute) {
+      currentRoute.value = newRoute
+      localStorage.setItem('activeRoute', newRoute)
+    }
   },
   { immediate: true }
 )
 
-// Highlight current route (reactive + watch-based)
+// Determine if a route is active
 const isActiveRoute = (routeName) =>
-  computed(() => {
-    const name = currentRoute.value || ''
-    const url = page.value?.props?.ziggy?.location || ''
-    return name === routeName || url.includes(routeName)
-  })
+  computed(() => currentRoute.value === routeName)
 
-// Auto-expand dropdowns when a child route is active
+// Expand dropdown if any child route is active
 const isDropdownActive = (section) =>
-  computed(() => {
-    const name = currentRoute.value || ''
-    const url = page.value?.props?.ziggy?.location || ''
-    return name.startsWith(`${section}.`) || url.includes(section)
-  })
+  computed(() => currentRoute.value.startsWith(`${section}.`))
 
+// Initialize icons on mount
 onMounted(() => {
   feather.replace()
-})
 
+  // Restore saved active route
+  const saved = localStorage.getItem('activeRoute')
+  if (saved) currentRoute.value = saved
+})
 </script>

@@ -37,10 +37,7 @@
           </button>
 
           <!-- Theme Toggle -->
-          <button class="btn btn-link btn-square btn-link-header btnsunmoon" type="button" @click="toggleTheme">
-            <i data-feather="sun" v-show="currentTheme === 'light'" class="sun"></i>
-            <i data-feather="moon" v-show="currentTheme === 'dark'" class="moon"></i>
-          </button>
+          <ThemeToggle />
 
           <!-- Notification Dropdown -->
           <div class="dropdown d-inline-block">
@@ -87,23 +84,9 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import feather from 'feather-icons'
+import ThemeToggle from '@/Components/ThemeToggle.vue'
 
 const currentTheme = ref('light')
-
-const toggleTheme = () => {
-  const htmlEl = document.documentElement
-  const newTheme = currentTheme.value === 'light' ? 'dark' : 'light'
-  htmlEl.setAttribute('data-bs-theme', newTheme)
-  localStorage.setItem('theme', newTheme)
-  currentTheme.value = newTheme
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme') || 'light'
-  currentTheme.value = savedTheme
-  document.documentElement.setAttribute('data-bs-theme', savedTheme)
-  feather.replace()
-})
 
 watch(currentTheme, () => {
   feather.replace()

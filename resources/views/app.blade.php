@@ -32,7 +32,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased sidebar-open">
+<body class="font-sans antialiased">
     @inertia
 
     <script src="{{ asset('dashboard-assets/js/learning/learning-dashboard.js') }}"></script>
