@@ -72,7 +72,7 @@
               <a class="dropdown-item" href="#">My Profile</a>
               <a class="dropdown-item" href="#">Settings</a>
               <hr class="my-1" />
-              <a class="dropdown-item text-danger" href="#">Logout</a>
+              <a class="dropdown-item text-danger" href="#" @click.prevent="logout">Logout</a>
             </div>
           </div>
         </div>
@@ -85,6 +85,11 @@
 import { ref, onMounted, watch } from 'vue'
 import feather from 'feather-icons'
 import ThemeToggle from '@/Components/ThemeToggle.vue'
+import { router } from '@inertiajs/vue3';
+
+const logout = () => {
+  router.post(route('logout'))
+}
 
 const currentTheme = ref('light')
 
