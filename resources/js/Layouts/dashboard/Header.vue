@@ -69,11 +69,18 @@
                 <h6 class="mb-0">John Doe</h6>
                 <p class="text-muted small mb-0">Administrator</p>
               </div>
+
               <a class="dropdown-item" href="#">My Profile</a>
               <a class="dropdown-item" href="#">Settings</a>
+
               <hr class="my-1" />
-              <a class="dropdown-item text-danger" href="#" @click.prevent="logout">Logout</a>
+
+              <!-- Logout -->
+              <a class="dropdown-item text-danger" href="#" @click.prevent="logout">
+                Logout
+              </a>
             </div>
+
           </div>
         </div>
       </div>

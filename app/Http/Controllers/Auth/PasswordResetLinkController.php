@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\User;
 
 class PasswordResetLinkController extends Controller
 {
@@ -30,22 +31,55 @@ class PasswordResetLinkController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'email' => 'required|email',
+            'identifier' => 'required|string',
         ]);
 
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        $identifier = trim($request->input('identifier'));
 
-        if ($status == Password::RESET_LINK_SENT) {
-            return back()->with('status', __($status));
+        // Detect if Input is an email or a phone number
+        $isEmail = filter_var($identifier, FILTER_VALIDATE_EMAIL);
+        $isPhone = !$isEmail && preg_match('/^\+?\d{7,15}$/', $identifier);
+
+        if (! $isEmail && ! $isPhone) {
+            throw ValidationException::withMessages([
+                'identifier' => ['Please enter a valid email address or phone number.'],
+            ]);
         }
 
+        // Email reset 
+        if ($isEmail) {
+            $status = Password::sendResetLink(['email' => $identifier]);
+
+            if ($status === Password::RESET_LINK_SENT) {
+                return back()->with('status', __($status));
+            }
+
+            throw ValidationException::withMessages([
+                'identifier' => [trans($status)],
+            ]);
+        }
+
+        // Phone reset (for future SMS integration) ---
+        if ($isPhone) {
+            // Check if this phone exists in the users table
+            $user = User::where('phone', $identifier)->first();
+
+            if (! $user) {
+                throw ValidationException::withMessages([
+                    'identifier' => ['We could not find a user with that phone number.'],
+                ]);
+            }
+
+            // To trigger an SMS reset token flow later.
+            return back()->with(
+                'status',
+                'A password reset link will be sent to your phone once SMS support is enabled.'
+            );
+        }
+
+        // Fallback (shouldn’t be reached)
         throw ValidationException::withMessages([
-            'email' => [trans($status)],
+            'identifier' => ['Unexpected input. Please try again.'],
         ]);
     }
 }
